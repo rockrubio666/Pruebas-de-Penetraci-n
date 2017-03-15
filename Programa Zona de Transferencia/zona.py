@@ -6,18 +6,20 @@ import subprocess
 import shlex
 
 
-#archivo = str(sys.argv[1])
-#ns = dns.resolver.query("ole.com.ar",'NS')
-ns = dns.resolver.query("google.com",'NS')
+archivo = str(sys.argv[1])
+domains = open(archivo, 'r').read().splitlines()
 
-
-for i in ns.response.answer:
+for line in domains:
 	
-	for j in i.items:
-		cmd = 'dig axfr @' + str(j) + ' ole.com.ar'
-		proc=subprocess.Popen(shlex.split(cmd),stdout=subprocess.PIPE)
-		out=proc.communicate()
-		a,b = out
-		#print a
+	ns = dns.resolver.query(line,'NS')
+	
+	for i in ns.response.answer:
+		for j in i.items:
+			cmd = 'dig axfr @' + str(j) + ' ' + line
+			proc=subprocess.Popen(shlex.split(cmd),stdout=subprocess.PIPE)
+			out=proc.communicate()
+			a,b = out
+			print a
+
 
 
