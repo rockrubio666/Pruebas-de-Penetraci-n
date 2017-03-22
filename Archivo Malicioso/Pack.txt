@@ -1,0 +1,23 @@
+﻿#Pasos seguidos para crear el archivo
+
+1.-Clonar: https://github.com/samratashok/nishang
+
+2.-En powershell, ponerse en el directorio donde se descargó el git: C:\..\nishang-master> 
+
+3.-Escribir: Import-Module .\nishang.psm1
+
+4.- cd Client
+#https://n0where.net/powershell-penetration-testing-framework-nishang/
+
+5.-Creamos el archivo que usaremos como payload.
+		#Get-NetTCPConnection -- Para verificar si se creo el puerto
+
+6.- Ver ayuda con Get-Help Out-Word -Full
+
+7.- .\Out-Word
+
+8.- Comando: Out-Word -PayloadScript 'C:\ruta\archivo.ps1' -OutputFile 'C:\ruta\pack.doc' 
+
+#Si aparece un error de Unable to locate, InteropOffice: 
+#https://answers.microsoft.com/en-us/msoffice/forum/msoffice_word-mso_other/unable-to-cast-com-object-of-type/34efcd57-e819-4a83-9cdd-501ab15b0971
+
